@@ -5,14 +5,13 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-// const cors = require("cors");
+const cors = require("cors");
 
-// app.use(cors({
-//   // origin: "http://localhost:4200",
-//   origin: "https://techforb-challenge.web.app",
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   allowedHeaders: ['Content-Type', 'Authorization']
-// }));
+app.use(cors({
+  origin: "http://localhost:4200",
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // const authenticateJWT = require("./middleware/auth");
 // app.use(authenticateJWT);

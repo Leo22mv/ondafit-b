@@ -1,6 +1,7 @@
 const express = require('express');
 // const authenticateJWT = require('../middleware/auth');
-const { createUser, getUsers, deleteUser } = require('../service/userService');
+const { createUser, deleteUser } = require('../service/userService');
+const { login } = require('../service/authService');
 
 const router = express.Router();
 
@@ -11,6 +12,7 @@ const router = express.Router();
 // router.delete('/plant/:id',authenticateJWT, deletePlant);
 
 router.post('/register', createUser);
+router.post('/login', login);
 // router.get('/plant/:id', getPlantById);
 // router.put('/plant/:id', updatePlant);
 router.delete('/:id', deleteUser);

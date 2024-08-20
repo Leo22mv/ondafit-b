@@ -23,7 +23,7 @@ app.use('/auth', authController);
 const userController = require('./controller/userController');
 app.use('/user', userController);
 
-const sequelize = require('./config/database');
+const { sequelize, User, Role } = require('./entity/initUserEntity');
 sequelize.sync()
     .then(() => {
         console.log('Base de datos sincronizada');

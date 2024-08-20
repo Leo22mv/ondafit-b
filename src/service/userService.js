@@ -1,6 +1,7 @@
 const User = require("../entity/user");
 const passwordService = require('./passwordService');
 const { ValidationError, UniqueConstraintError } = require('sequelize');
+const Role = require("../entity/role");
 
 exports.getUsers = async (req, res) => {
     try {
@@ -34,6 +35,7 @@ exports.createUser = async (req, res) => {
         if (userData.email.length < 1) {
             newUser.email = null;
         }
+        newUser.role_id = 2;
         await newUser.save();
         res.status(201).json(newUser);
     } catch (error) {
@@ -42,7 +44,8 @@ exports.createUser = async (req, res) => {
         } else if (error instanceof ValidationError) {
             res.status(400).json({ error: "Datos de usuario inválidos." });
         } else {
-            res.status(500).json({ error: "Error al crear usuario. Vuelva a intentarlo en unos minutos." });
+            // res.status(500).json({ error: "Error al crear usuario. Vuelva a intentarlo en unos minutos." });
+            res.status(500).json({ error: error.name });
         }
     }
 };

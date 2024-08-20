@@ -13,6 +13,7 @@ Para ejecutar el proyecto se debe usar el comando `npm run start` desde una term
 ### Autenticación
 
 Registro de usuario: `POST /auth/register`; Campos requeridos: name, email; Campos opcionales: surname, password, phone
+Inicio de sesión: `POST /auth/login`; Campos requeridos: email, password
 
 ### Usuarios
 

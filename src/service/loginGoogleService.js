@@ -1,4 +1,4 @@
-import { OAuth2Client } from 'google-auth-library';
+const { OAuth2Client } = require('google-auth-library');
 
 exports.validateToken = async (token) => {
     const clientId = process.env.CLIENT_ID;

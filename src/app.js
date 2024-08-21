@@ -6,10 +6,15 @@ const app = express();
 app.use(express.json());
 
 const cors = require("cors");
-
+const allowedOrigins = ["http://localhost:4200", "https://ondafit-emp.web.app"];
 app.use(cors({
-  // origin: "http://localhost:4200",
-  origin: "https://ondafit-emp.web.app",
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Origen bloqueado por CORS"));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));

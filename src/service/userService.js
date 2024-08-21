@@ -40,7 +40,7 @@ exports.createUser = async (req, res) => {
         res.status(201).json(newUser);
     } catch (error) {
         if (error.name == 'SequelizeUniqueConstraintError') {
-            res.status(409).json({ error: "El usuario ya existe." });
+            res.status(409).json({ error: "Email existente." });
         } else if (error instanceof ValidationError) {
             res.status(400).json({ error: "Datos de usuario inválidos." });
         } else {
